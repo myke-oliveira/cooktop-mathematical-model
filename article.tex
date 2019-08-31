@@ -64,7 +64,7 @@
 % ---
 
 % --- Informações de dados para CAPA e FOLHA DE ROSTO ---
-\title{Modelo Matemático de um Cooktop Indutivo}
+\title{\Huge{Modelo Matemático de um Cooktop Indutivo}}
 
 \author{Myke Albuquerque Pinto de Oliveira}
 
@@ -224,13 +224,13 @@ O presente artigo é o resultado de discussão e pesquisa da Unidade de Aprendiz
 
 \subsection{Enunciado do problema}
 
-Dado um condutor elétrico $ L $ de formato espiralado percorrido por uma corrente $ i(t) $ e uma chapa $ C $ sobre esse condutor, conforme figura \ref{fig:fig1}. Estabelecer a relação entre a corrente $ i(t) $ e a potência de calor $ P(t) $ gerada na chapa metálica.
+Dado um condutor elétrico $ L $ de formato espiralado percorrido por uma corrente $ i(t) $ e uma chapa $ C $ sobre esse condutor, conforme figura \ref{fig:esquema}. Estabelecer a relação entre a corrente $ i(t) $ e a potência de calor $ P(t) $ gerada na chapa metálica.
 
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/fig1}
 	\caption[Esquema de um cooktop de indução]{Esquema de um cooktop de indução}
-	\label{fig:fig1}
+	\label{fig:esquema}
 \end{figure}
 
 \subsection{Tema que contextualiza o problema}
@@ -265,28 +265,67 @@ Este problema se baseia na área da física e engenharia elétrica de eletromagn
 	\item[$ i(t) $] corrente elétrica que circula o condutor espiradado.
 	\item[$ \textbf{B}(t) $] campo magnético gerado.
 	\item[$ \textbf{E}(t) $] campo elétrico.
-	\item[$ \textbf{J}(t) $] densidade de corrente elétrica
-	\item[$ P(t) $] potência calorifica gerada na panela
+	\item[$ \textbf{J}(t) $] densidade de corrente elétrica.
+	\item[$ P(t) $] potência calorifica gerada na panela.
 \end{itemize}
 
 \textbf{Contantes físicas:}
 
 \begin{itemize}
-	\item[$ \epsilon_0 $] permissibilidade elétrica do vácuo
-	\item[$ \mu_0 $] permiabilidade magnética do vácuo
+	\item[$ \epsilon_0 $] permissibilidade elétrica do vácuo.
+	\item[$ \mu_0 $] permiabilidade magnética do vácuo.
 \end{itemize}
 
 \section{Resolução detalhada do problema}
 
-\begin{equation}
-	d\textbf{B} = \frac{\mu_0}{4\pi} \frac{Id\textbf{l} \times \hat{\textbf{r}}}{r^2}
-	\label{biot-savart}
+O primeiro passo para resolver o problema é analisar o percurso que a corrente elétrica realiza no equipamento. Foi dado que o condutor é uma espiral com os raio $ R $, $ N $ espiras e espaçamento radial entre as espiras $ e $. Devido a simetria radial do condutor, é bastante conveniente utilizar coordenadas cilindricas, associando a cada trecho do condutor um raio $ r_l(\theta) $ e um angulo $ \theta $. A função $ r_l(\theta) $ é expressa de acordo com a equação \ref{eq:condutor-polar}.
+
+\begin{equation} \label{eq:condutor-polar}
+	\begin{array}{l}
+		r_L(\theta) = R - \frac{e}{2\pi} \theta \\
+		0 \le \theta \le 2\cdot N \cdot \pi
+	\end{array}
 \end{equation}
 
-\begin{equation}
-	r(\theta) = R - \frac{e}{2\pi}\theta;\quad 
-	0 \le \theta \le 2\cdot N \cdot \pi
-	\label{curva-espira}
+A figura \ref{fig:condutor-polar} apresenta o resultado da equação \ref{eq:condutor-polar}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/espirapolar}
+	\caption[Condutor em coordenadas polares]{Condutor em coordenadas polares}
+	\label{fig:condutor-polar}
+\end{figure}
+
+A representação em coordenadas cartesianas pode ser interessante em alguns momentos. A conversão para coordenadas cartesianas é realizada pela transformação \ref{eq:polar-cartesiano}
+
+\begin{equation}[h] \label{eq:polar-cartesiano}
+	\begin{array}{l}
+	x = r \cdot \cos \theta\\ 
+	y = r \cdot \sin \theta
+	\end{array}
+\end{equation}
+
+A figura \ref{fig:espiracartesiana} apresenta a mesma espira em coordenadas cartesianas.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/espiracartesiana}
+	\caption[Condutor em coordenadas cartesianas]{Condutor em coordenadas cartesianas}
+	\label{fig:espiracartesiana}
+\end{figure}
+
+Os elementos elementos de corrente são responsáveis pela geração do campo magnético estão representados da figura \ref{fig:elementosdecondutor}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/elementosdecondutor}
+	\caption[Elementos de corrente discretizados]{Elementos de corrente discretizados}
+	\label{fig:elementosdecondutor}
+\end{figure}
+
+
+\begin{equation} \label{eq:biot-savart}
+	d\textbf{B} = \frac{\mu_0}{4\pi} \frac{Id\textbf{l} \times \hat{\textbf{r}}}{r^2}
 \end{equation}
 
 
