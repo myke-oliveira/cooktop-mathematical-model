@@ -64,7 +64,7 @@
 % ---
 
 % --- Informações de dados para CAPA e FOLHA DE ROSTO ---
-\title{\Huge{Modelo Matemático de um Cooktop Indutivo}}
+\title{\Huge{Análise de um Modelo Matemático para um Cooktop Indutivo Utilizando Python 3}}
 
 \author{Myke Albuquerque Pinto de Oliveira}
 
@@ -86,7 +86,7 @@
 		pdfauthor={\@author},
     	pdfsubject={Modelo Matemático de um Cooktop Indutivo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={cooktop}{indução}{eletromagnetismo}{modelagem matemática}{física}, 
+		pdfkeywords={cooktop}{indução}{eletromagnetismo}{modelagem matemática}{física}{Python3}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -170,7 +170,7 @@
  \vspace{\onelineskip}
  
  \noindent
- \textbf{Palavras-chave}: cooktop, indução, eletromagnetismo, modelagem matemática, física.
+ \textbf{Palavras-chave}: cooktop, indução, eletromagnetismo, modelagem matemática, física, Python 3.
 \end{resumoumacoluna}
 
 
@@ -183,7 +183,7 @@
    \vspace{\onelineskip}
  
    \noindent
-   \textbf{Keywords}: cook-top, induction, electromagnetism, mathematical model, physics.
+   \textbf{Keywords}: cook-top, induction, electromagnetism, mathematical model, physics, Python 3.
  \end{otherlanguage*}  
 \end{resumoumacoluna}
 
@@ -218,9 +218,11 @@ Entre as vantangens de se adotar um cooktop de indução, pode-se citar:
 	\item A maioria dos modelos é microcontrolada e fornece opções como o desligamento temporizado e o controle automático de potência.
 \end{itemize}
 
-O presente artigo é o resultado de discussão e pesquisa da Unidade de Aprendizagem "Resolução de Problemas no Contexto da Física" e tem como objetivo estabelecer a relação entre a corrente elétrica que circula na bobina espiralada do cooktop de indução e a potência calórica fornecida. Incluindo essa introdução, o artigo está dividido em cinco seções, a segunda seção apresenta mais detalhes sobre o problema a ser resolvido. A terceira seção resolve detalhadamente o problema. A quarta seção fecha este artigo sob a ótica educativa e de formação de competências.
+O presente artigo é o resultado de discussão e pesquisa da Unidade de Aprendizagem "Resolução de Problemas no Contexto da Física" e tem como objetivo estabelecer a relação entre a corrente elétrica que circula na bobina espiralada do cooktop de indução e a potência calórica fornecida. Incluindo essa introdução, o artigo está dividido em cinco seções, a segunda seção apresenta mais detalhes sobre o problema a ser resolvido. A terceira seção resolve detalhadamente o problema utilizando técnicas numéricas e a linguagem de programação Python 3. A quarta seção fecha este artigo sob a ótica educativa e de formação de competências.
 
 \section{Problema de estudo}
+
+Nesta seção, é apresentado todos os detalhes necessários para resolver os problema, todas as grandezas físicas envolvidas são definidas e as variáveis relevantes para o problema são escolhidas.
 
 \subsection{Enunciado do problema}
 
@@ -239,9 +241,11 @@ Este problema se baseia na área da física e engenharia elétrica de eletromagn
 
 \subsection{Objetos de Estudos}
 
-\textbf{Corrente elétrica:} é o movimento em uma direção preferencial de portadores de carga (eletróns ou íons), ou seja, uma taxa de transferência de cargas elétricas. A unidade de corrente elétrica no SI é o Ampère ($ A $), ou Coulomb por segundo ($ C/s $). \cite{keller:1998}
+Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
-\textbf{Campo elétrico:} é uma grandeza vetorial associada a posição que estabelece a relação entre a força elétrica exercida sobre uma particula e sua carga elétrica. O campo elétrico pode ser provocado pela presença de outras cargas elétricas ou induzida por campos magnéticos variántes no tempo. A unidade de campo elétrico no SI é o Newton por Coulomb ($ N/C $) ou Volt por metro ($ V/m $). \cite{keller:1998}
+\textbf{Corrente elétrica:} é o movimento em uma direção preferencial de portadores de carga (elétrons ou íons), ou seja, uma taxa de transferência de cargas elétricas. A unidade de corrente elétrica no SI é o Ampère ($ A $), ou Coulomb por segundo ($ C/s $). \cite{keller:1998}
+
+\textbf{Campo elétrico:} é uma grandeza vetorial associada a posição que estabelece a relação entre a força elétrica exercida sobre uma partícula e sua carga elétrica. O campo elétrico pode ser provocado pela presença de outras cargas elétricas ou induzida por campos magnéticos variantes no tempo. A unidade de campo elétrico no SI é o Newton por Coulomb ($ N/C $) ou Volt por metro ($ V/m $). \cite{keller:1998}
 
 \textbf{Campo magnético:} é uma grandeza vetorial associada a posição que estabelece a relação entre a força magnética exercida sobre uma carga elétrica em movimento. O campo magnético é gerado por cargas elétricas em movimento (também denominadas elementos de corrente elétrica) e também pode ser induzido por campos elétricos variantes no tempo. A unidade de campo magnético no SI é o Newton-segundo por Coulomb-metro ($ (Ns)/(Cm) $), Newton por Ampère-metro ($ N/(Am) $) ou Tesla ($ T $). \cite{keller:1998}
 
@@ -256,13 +260,13 @@ Este problema se baseia na área da física e engenharia elétrica de eletromagn
 	\item[$ N $] número de espiras na bobina
 	\item[$ e $] espaçamento radial entre as espiras da bobinas
 	\item[$ d $] distância entre a bobina e o fundo da panela.
+	\item[$ i(t) $] corrente elétrica que circula o condutor espiradado.
 \end{itemize}
 
 \textbf{Variáveis associadas ao problema:}
 
 \begin{itemize}
 	\item[$ t $] tempo, variável independente.
-	\item[$ i(t) $] corrente elétrica que circula o condutor espiradado.
 	\item[$ \textbf{B}(t) $] campo magnético gerado.
 	\item[$ \textbf{E}(t) $] campo elétrico.
 	\item[$ \textbf{J}(t) $] densidade de corrente elétrica.
