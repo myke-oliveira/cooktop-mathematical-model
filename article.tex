@@ -31,6 +31,7 @@
 \usepackage{color}				% Controle das cores
 \usepackage{graphicx}			% Inclusão de gráficos
 \usepackage{microtype} 			% para melhorias de justificação
+\usepackage{booktabs}           % tabelas
 % ---
 		
 % ---
@@ -243,6 +244,8 @@ Este problema se baseia na área da física e engenharia elétrica de eletromagn
 
 Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
+
+
 \textbf{Corrente elétrica:} é o movimento em uma direção preferencial de portadores de carga (elétrons ou íons), ou seja, uma taxa de transferência de cargas elétricas. A unidade de corrente elétrica no SI é o Ampère ($ A $), ou Coulomb por segundo ($ C/s $). \cite{keller:1998}
 
 \textbf{Campo elétrico:} é uma grandeza vetorial associada a posição que estabelece a relação entre a força elétrica exercida sobre uma partícula e sua carga elétrica. O campo elétrico pode ser provocado pela presença de outras cargas elétricas ou induzida por campos magnéticos variantes no tempo. A unidade de campo elétrico no SI é o Newton por Coulomb ($ N/C $) ou Volt por metro ($ V/m $). \cite{keller:1998}
@@ -255,15 +258,29 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
 \textbf{Parâmetros que definem o problema:}
 
-\begin{itemize}
-	\item[$ R $] raio da bobina.
-	\item[$ N $] número de espiras na bobina
-	\item[$ e $] espaçamento radial entre as espiras da bobinas
-	\item[$ d $] distância entre a bobina e o fundo da panela.
-	\item[$ i(t) $] corrente elétrica que circula o condutor espiradado.
-\end{itemize}
+\begin{table}[h]
+	\begin{tabular}{@{}llll@{}}
+		\toprule
+		\textbf{Parâmetro}                     & \textbf{Simbolo} & \textbf{Unidade de Medida} & \textbf{Restrição} \\ \midrule
+		Raio da bobina                         & $ R $            & m (metro)                  & $ \ge 0 $          \\
+		Número de espiras na bobina            & $ N $            & unidade                    & natural            \\
+		Espaçamento entre a bobina e a panela  & $ d $            & m (metro)                  & $ \ge 0 $          \\
+		Corrente elétrica que circula a bobina & $ i(t) $         & A (ampère)                 & função do tempo    \\ \bottomrule
+	\end{tabular}
+\end{table}
 
 \textbf{Variáveis associadas ao problema:}
+
+\begin{table}[h]
+	\begin{tabular}{@{}llll@{}}
+		\toprule
+		Variável                      & Simbolo                  & \textbf{Unidade de Medida}        & \textbf{Restrição}       \\ \midrule
+		Tempo (variável independente) & t                        & s (segundo)              &                 \\ 
+		Coordenadas Cartesianas       & x, y, z                  & m (metro)                &                 \\ 
+		Coordenadas Cilíndricas       & r, \textbackslash{}theta & m (metro), rad (radiano) &                 \\ 
+		Campo Magnético               & B(x, y, z, t)            & A (ampère)               & função do tempo \\ \bottomrule
+	\end{tabular}
+\end{table}
 
 \begin{itemize}
 	\item[$ t $] tempo, variável independente.
