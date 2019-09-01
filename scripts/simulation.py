@@ -4,6 +4,8 @@
 # Espira em Coordenadas Polares
 import numpy as np
 import matplotlib.pyplot as plt
+from itertools import product
+from mpl_toolkits.mplot3d import Axes3D
 
 # Parameters
 R = 5e-2
@@ -49,20 +51,35 @@ fig, ax = plt.subplots()
 q = ax.quiver(X_L, Y_L, dX_L, dY_L)
 fig.show(True)
 
-x_P, y_P, z_P = 3e-2, 3e-2, 3e-2
-X_R = (x_P- x_0 for x_0 in x_L)
-Y_R = (y_P - y_0 for y_0 in y_L)
-Z_R = (y_P - z_0 for z_0 in z_L)
-# print(*X_R, *Y_R, *Z_R)
+x_Blist = list()
+y_Blist = list()
+z_Blist = list()
+x_Plist = list()
+y_Plist = list()
+z_Plist = list()
+for x_P, y_P, z_P in product(np.arange(-.06, .06, .01), np.arange(-.06, .06, .01), np.arange(0, .06, .01)):
+    x_Plist.append(x_P)
+    y_Plist.append(y_P)
+    z_Plist.append(z_P)
+    X_R = (x_P- x_0 for x_0 in x_L)
+    Y_R = (y_P - y_0 for y_0 in y_L)
+    Z_R = (y_P - z_0 for z_0 in z_L)
+    # print(*X_R, *Y_R, *Z_R)
+    B = 0
+    for x_r, y_r, z_r, dx_L, dy_L, dz_L in zip(X_R, Y_R, Z_R, dX_L, dY_L, dZ_L):
+        r_squared = x_r**2 + y_r**2 + z_r**2
+        x_r_hat = x_r / r_squared**5
+        y_r_hat = y_r / r_squared**5
+        z_r_hat = z_r / r_squared**5
+        dl = np.array((dx_L, dy_L, dz_L))
+        r_hat = np.array((x_r_hat, y_r_hat, z_r_hat))
+        B += 1e-7*i*np.cross(dl, r_hat)/r_squared
+    x_Blist.append(B[0])
+    y_Blist.append(B[1])
+    z_Blist.append(B[2])
+fig = plt.figure()
+aux = fig.gca(projection='3d')
+aux.quiver(x_Plist, y_Plist, z_Plist, x_Blist, y_Blist, z_Blist, length=.01, normalize=True)
+plt.show(True)
 
-B = 0
-#for x_r, y_r, z_r, dx_L, dy_L, dz_L in zip(X_R, Y_R, Z_R, dX_L, dY_L, dZ_L):
-#    r_squared = x_r**2 + y_r**2 + z_r**2
-#    x_r_hat = x_r / r_squared**5
-#    y_r_hat = y_r / r_squared**5
-#    z_r_hat = z_r / r_squared**5
-#    dl = np.array((dx_L, dy_L, dz_L))
-#    r_hat = np.array((x_r_hat, y_r_hat, z_r_hat))
-    
-#    
 
