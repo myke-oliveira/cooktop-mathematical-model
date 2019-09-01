@@ -256,9 +256,7 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
 \subsection{Variáveis e parâmetros do problema}
 
-\textbf{Parâmetros que definem o problema:}
-
-\begin{table}[h]
+\begin{table}[h] \label{tab:paramentros}
 	\begin{tabular}{@{}llll@{}}
 		\toprule
 		\textbf{Parâmetro}                     & \textbf{Simbolo} & \textbf{Unidade de Medida} & \textbf{Restrição} \\ \midrule
@@ -267,35 +265,34 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 		Espaçamento entre a bobina e a panela  & $ d $            & m (metro)                  & $ \ge 0 $          \\
 		Corrente elétrica que circula a bobina & $ i(t) $         & A (ampère)                 & função do tempo    \\ \bottomrule
 	\end{tabular}
+	\caption{Parâmetros do problema}
 \end{table}
 
-\textbf{Variáveis associadas ao problema:}
-
-\begin{table}[h]
+\begin{table}[h] \label{tab:variaveis}
 	\begin{tabular}{@{}llll@{}}
 		\toprule
-		Variável                      & Simbolo                  & \textbf{Unidade de Medida}        & \textbf{Restrição}       \\ \midrule
-		Tempo (variável independente) & t                        & s (segundo)              &                 \\ 
-		Coordenadas Cartesianas       & x, y, z                  & m (metro)                &                 \\ 
-		Coordenadas Cilíndricas       & r, \textbackslash{}theta & m (metro), rad (radiano) &                 \\ 
-		Campo Magnético               & B(x, y, z, t)            & A (ampère)               & função do tempo \\ \bottomrule
+		\textbf{Variável}             & \textbf{Simbolo}            & \textbf{Unidade de Medida}        & \textbf{Restrição}     \\ \midrule
+		Tempo (variável independente)  & $ t $                      & s (segundo)                       &                \\ 
+		Coordenadas Cartesianas        & $ x, y, z $                & m (metro)                         &                \\ 
+		Coordenadas Cilíndricas        & $ r, \theta $              & m (metro), rad (radiano)          &                \\ 
+		Campo Elétrico                 & $ \textbf{E}(x, y, z, t) $ & V/m (Volt por metro)              & campo vetorial \\ 
+		Campo Magnético                & $ \textbf{B}(x, y, z, t) $ & T (Tesla)                         & campo vetorial \\
+		Densidade de corrente elétrica & $ \textbf{J}(x, y, z, t) $ & A/m2 (Ampére por metro quatrado)  & campo vetorial \\
+		Potência calórica              & $ P(x, y, z, t) $          & W (Watt)                          & campo escalar  \\ \bottomrule
 	\end{tabular}
+	\caption{Variáveis do problema}
 \end{table}
 
-\begin{itemize}
-	\item[$ t $] tempo, variável independente.
-	\item[$ \textbf{B}(t) $] campo magnético gerado.
-	\item[$ \textbf{E}(t) $] campo elétrico.
-	\item[$ \textbf{J}(t) $] densidade de corrente elétrica.
-	\item[$ P(t) $] potência calorifica gerada na panela.
-\end{itemize}
-
-\textbf{Contantes físicas:}
-
-\begin{itemize}
-	\item[$ \epsilon_0 $] permissibilidade elétrica do vácuo.
-	\item[$ \mu_0 $] permiabilidade magnética do vácuo.
-\end{itemize}
+\begin{table}[h] \label{tab:contantes}
+	\begin{tabular}{@{}lll@{}}
+		\toprule
+		Constante      & Símbolo      & Valor \\ \midrule
+		Pemissividade  & $ \epsilon $ & $ 8,85 \cdot 10^{-12} F m^{-1} $ \\
+		Permeabilidade & $ \mu $      & $ 4\pi \cdot 10^-7 T m A^{-1}  $ \\
+		Resistividade  & $ \varrho $     & $ \Omega m^{-1} $             \\ \bottomrule
+	\end{tabular}
+	\caption{Constantes físicas}
+\end{table}
 
 \section{Resolução detalhada do problema}
 
