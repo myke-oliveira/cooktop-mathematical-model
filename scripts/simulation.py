@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from itertools import product
 from mpl_toolkits.mplot3d import Axes3D
+from time import sleep
 
 # Parameters
 R = 5e-2
@@ -21,10 +22,11 @@ i = 1.
 theta = np.linspace(0, 2*N*np.pi, numsteps)
 r_L = R - e/(2*np.pi)*theta
 
+fig = plt.figure(1)
 plt.polar(theta, r_L)
 plt.grid()
-plt.show(True)
-
+fig.show(False)
+sleep(.5)
 
 # Espira em Coordenadas Cartesianas
 
@@ -33,8 +35,10 @@ x_L = r_L * np.cos(theta)
 y_L = r_L * np.sin(theta)
 z_L = np.zeros(len(x_L))
 
+fig = plt.figure(2)
 plt.plot(x_L, y_L)
-plt.show(True)
+fig.show(False)
+sleep(.5)
 
 # # Elementos do condutor orientado
 
@@ -49,7 +53,7 @@ Y_L = (y_L[1:] + y_L[:-1])/2
 
 fig, ax = plt.subplots()
 q = ax.quiver(X_L, Y_L, dX_L, dY_L)
-fig.show(True)
+fig.show(False)
 
 x_Blist = list()
 y_Blist = list()
@@ -80,6 +84,5 @@ for x_P, y_P, z_P in product(np.arange(-.06, .06, .01), np.arange(-.06, .06, .01
 fig = plt.figure()
 aux = fig.gca(projection='3d')
 aux.quiver(x_Plist, y_Plist, z_Plist, x_Blist, y_Blist, z_Blist, length=.01, normalize=True)
-plt.show(True)
-
-
+plt.show(False)
+input()
