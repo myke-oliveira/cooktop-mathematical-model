@@ -65,7 +65,7 @@
 % ---
 
 % --- Informações de dados para CAPA e FOLHA DE ROSTO ---
-\title{\Huge{Análise de um Modelo Matemático para um Cooktop Indutivo Utilizando Python 3}}
+\title{\Huge{Análise de um Modelo Matemático para um Cooktop Indutivo}}
 
 \author{Myke Albuquerque Pinto de Oliveira}
 
@@ -87,7 +87,7 @@
 		pdfauthor={\@author},
     	pdfsubject={Modelo Matemático de um Cooktop Indutivo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={cooktop}{indução}{eletromagnetismo}{modelagem matemática}{física}{Python3}, 
+		pdfkeywords={cooktop}{indução}{eletromagnetismo}{modelagem matemática}{física}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -171,7 +171,7 @@
  \vspace{\onelineskip}
  
  \noindent
- \textbf{Palavras-chave}: cooktop, indução, eletromagnetismo, modelagem matemática, física, Python 3.
+ \textbf{Palavras-chave}: cooktop, indução, eletromagnetismo, modelagem matemática, física.
 \end{resumoumacoluna}
 
 
@@ -184,7 +184,7 @@
    \vspace{\onelineskip}
  
    \noindent
-   \textbf{Keywords}: cook-top, induction, electromagnetism, mathematical model, physics, Python 3.
+   \textbf{Keywords}: cook-top, induction, electromagnetism, mathematical model, physics.
  \end{otherlanguage*}  
 \end{resumoumacoluna}
 
@@ -219,11 +219,11 @@ Entre as vantangens de se adotar um cooktop de indução, pode-se citar:
 	\item A maioria dos modelos é microcontrolada e fornece opções como o desligamento temporizado e o controle automático de potência.
 \end{itemize}
 
-O presente artigo é o resultado de discussão e pesquisa da Unidade de Aprendizagem "Resolução de Problemas no Contexto da Física" e tem como objetivo estabelecer a relação entre a corrente elétrica que circula na bobina espiralada do cooktop de indução e a potência calórica fornecida. Incluindo essa introdução, o artigo está dividido em cinco seções, a segunda seção apresenta mais detalhes sobre o problema a ser resolvido. A terceira seção resolve detalhadamente o problema utilizando técnicas numéricas e a linguagem de programação Python 3. A quarta seção fecha este artigo sob a ótica educativa e de formação de competências.
+O presente artigo é o resultado de discussão e pesquisa da Unidade de Aprendizagem "Resolução de Problemas no Contexto da Física" e tem como objetivo estabelecer a relação entre a corrente elétrica que circula na bobina espiralada do cooktop de indução e a potência calórica fornecida. Incluindo essa introdução, o artigo está dividido em cinco seções, a segunda seção apresenta mais detalhes sobre o problema a ser resolvido. A terceira seção resolve detalhadamente o problema utilizando técnicas numéricas e a linguagem de programação Python 3. A quarta seção encerra este artigo sob a ótica educativa e de formação de competências.
 
 \section{Problema de estudo}
 
-Nesta seção, é apresentado todos os detalhes necessários para resolver os problema, todas as grandezas físicas envolvidas são definidas e as variáveis relevantes para o problema são escolhidas.
+Nesta seção, são apresentados todos os detalhes necessários para resolver os problema, todas as grandezas físicas envolvidas são definidas e as variáveis relevantes para o problema são escolhidas.
 
 \subsection{Enunciado do problema}
 
@@ -244,8 +244,6 @@ Este problema se baseia na área da física e engenharia elétrica de eletromagn
 
 Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
-
-
 \textbf{Corrente elétrica:} é o movimento em uma direção preferencial de portadores de carga (elétrons ou íons), ou seja, uma taxa de transferência de cargas elétricas. A unidade de corrente elétrica no SI é o Ampère ($ A $), ou Coulomb por segundo ($ C/s $). \cite{keller:1998}
 
 \textbf{Campo elétrico:} é uma grandeza vetorial associada a posição que estabelece a relação entre a força elétrica exercida sobre uma partícula e sua carga elétrica. O campo elétrico pode ser provocado pela presença de outras cargas elétricas ou induzida por campos magnéticos variantes no tempo. A unidade de campo elétrico no SI é o Newton por Coulomb ($ N/C $) ou Volt por metro ($ V/m $). \cite{keller:1998}
@@ -256,7 +254,9 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 
 \subsection{Variáveis e parâmetros do problema}
 
-\begin{table}[h] \label{tab:paramentros}
+Parâmetros do problema são grandezas físicas dadas na definição do problema, ou valores de entrada para o cálculo, enquanto variáveis são grandezas físicas a serem determinadas durante a resolução do problema, A tabela \ref{tab:parametros} apresenta os parâmetros do problema, já a tabela \ref{tab:variaveis} apresenta as variáveis do problema. Por fim a tabela \ref{tab:constantes} apresenta constantes físicas que serão necessárias para a resolução do problema.
+
+\begin{table}[h]
 	\begin{tabular}{@{}llll@{}}
 		\toprule
 		\textbf{Parâmetro}                     & \textbf{Simbolo} & \textbf{Unidade de Medida} & \textbf{Restrição} \\ \midrule
@@ -266,9 +266,10 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 		Corrente elétrica que circula a bobina & $ i(t) $         & A (ampère)                 & função do tempo    \\ \bottomrule
 	\end{tabular}
 	\caption{Parâmetros do problema}
+	\label{tab:parametros}
 \end{table}
 
-\begin{table}[h] \label{tab:variaveis}
+\begin{table}[h]
 	\begin{tabular}{@{}llll@{}}
 		\toprule
 		\textbf{Variável}             & \textbf{Simbolo}            & \textbf{Unidade de Medida}        & \textbf{Restrição}     \\ \midrule
@@ -281,9 +282,10 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 		Potência calórica              & $ P(x, y, z, t) $          & W (Watt)                          & campo escalar  \\ \bottomrule
 	\end{tabular}
 	\caption{Variáveis do problema}
+	\label{tab:variaveis}
 \end{table}
 
-\begin{table}[h] \label{tab:contantes}
+\begin{table}[h]
 	\begin{tabular}{@{}lll@{}}
 		\toprule
 		Constante      & Símbolo      & Valor \\ \midrule
@@ -292,11 +294,12 @@ Seguem a definição das grandezas físicas que são envolvidas pelo fenômeno.
 		Resistividade  & $ \varrho $     & $ \Omega m^{-1} $             \\ \bottomrule
 	\end{tabular}
 	\caption{Constantes físicas}
+	\label{tab:constantes}
 \end{table}
 
 \section{Resolução detalhada do problema}
 
-O primeiro passo para resolver o problema é analisar o percurso que a corrente elétrica realiza no equipamento. Foi dado que o condutor é uma espiral com os raio $ R $, $ N $ espiras e espaçamento radial entre as espiras $ e $. Devido a simetria radial do condutor, é bastante conveniente utilizar coordenadas cilindricas, associando a cada trecho do condutor um raio $ r_l(\theta) $ e um angulo $ \theta $. A função $ r_l(\theta) $ é expressa de acordo com a equação \ref{eq:condutor-polar}.
+O primeiro passo para resolver o problema é analisar o percurso que a corrente elétrica realiza no equipamento. Foi dado que o condutor é uma espiral com os raio $ R $, $ N $ espiras e espaçamento radial entre as espiras $ e $. Devido a simetria radial do condutor, é bastante conveniente utilizar coordenadas cilíndricas, associando a cada trecho do condutor um raio $ r_L(\theta) $ e um angulo $ \theta $. A função $ r_l(\theta) $ é expressa de acordo com a equação \ref{eq:condutor-polar}.
 
 \begin{equation} \label{eq:condutor-polar}
 	\begin{array}{l}
@@ -314,12 +317,22 @@ A figura \ref{fig:condutor-polar} apresenta o resultado da equação \ref{eq:con
 	\label{fig:condutor-polar}
 \end{figure}
 
-A representação em coordenadas cartesianas pode ser interessante em alguns momentos. A conversão para coordenadas cartesianas é realizada pela transformação \ref{eq:polar-cartesiano}.
+A representação em coordenadas cartesianas é mais conveniente no momento de calcular o campo magnético em um ponto dado. A conversão para coordenadas cartesianas é realizada pela transformação \ref{eq:polar-cartesiano}.
 
 \begin{equation} \label{eq:polar-cartesiano}
 	\begin{array}{l}
-	x = r \cdot \cos \theta\\ 
+	x = r \cdot \cos \theta \\ 
 	y = r \cdot \sin \theta
+	\end{array}
+\end{equation}
+
+Essa transformação nos permite reescrever curva do condutor da bobina usando as equações paramétricas \ref{eq:condutor-parametricas}.
+
+\begin{equation} \label{eq:condutor-parametricas}
+	\begin{array}{l}
+		x(\theta) = \left(  R - \frac{e}{2\pi} \theta \right) \cdot \cos \theta \\
+		y(\theta) = \left(  R - \frac{e}{2\pi} \theta \right) \cdot \sin \theta \\
+		0 \le \theta \le 2\cdot N \cdot \pi
 	\end{array}
 \end{equation}
 
@@ -332,7 +345,7 @@ A figura \ref{fig:espiracartesiana} apresenta a mesma espira em coordenadas cart
 	\label{fig:espiracartesiana}
 \end{figure}
 
-Os elementos elementos de corrente são responsáveis pela geração do campo magnético estão representados da figura \ref{fig:elementosdecondutor}.
+O campo magnético induzido por essa bobina pode ser calculado usando a lei de Biot-Savart, equação \ref{eq:biot-savart}. No entando, usaremos uma versão discreta da lei de Biot-Savart, para tanto, é necessário discretizar os elementos de corrente na bobina. Esses elementos de corrente discretos estão representados na figura \ref{fig:elementosdecondutor}.
 
 \begin{figure}[h]
 	\centering
@@ -341,9 +354,14 @@ Os elementos elementos de corrente são responsáveis pela geração do campo ma
 	\label{fig:elementosdecondutor}
 \end{figure}
 
-
 \begin{equation} \label{eq:biot-savart}
-	d\textbf{B} = \frac{\mu_0}{4\pi} \frac{Id\textbf{l} \times \hat{\textbf{r}}}{r^2}
+	d\textbf{B} = \frac{\mu_0}{4\pi} \frac{i(t)d\textbf{l} \times \hat{\textbf{r}}}{r^2}
+\end{equation}
+
+Enumerando os elementos discretizados na \ref{fig:elementosdecondutor}, e aplicando a equação \ref{eq:biot-savart-dicreta}, tem-se o resultado da figura \ref{fig:magnetico}. Foi efetuado o cálculo com uma corrente constante de $ 1 A $ em uma bobina de $ 0.05 m $, espaçamento $ 0.005 m $ e 10 voltas, discretizado em 300 elementos.
+
+\begin{equation} \label{eq:biot-savart-dicreta}
+	\textbf{B}(x, y, z, t) \approx \frac{\mu_0i(t)}{4\pi} \sum_{i = 1}^{m} \left( \frac{\Delta\textbf{l}_1 \times \hat{\textbf{r}_1}}{r_1^2} \right)
 \end{equation}
 
 \begin{figure}[h]
