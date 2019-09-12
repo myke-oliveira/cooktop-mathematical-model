@@ -1,4 +1,6 @@
 from sympy import *
+from scipy.integrate import quad
+import numpy as np
 
 init_printing()
 
@@ -68,28 +70,80 @@ c = mu / (2*pi)
 print('c = ')
 print(c)
 
-dl_times_r_over_r_squared_1 = dl2_dtheta * z
-dl_times_r_over_r_squared_2 = -dl1_dtheta * z
+dl_times_r_over_r_squared_1 = dl2_dtheta * r3_hat - r2_hat * dl3_dthetha
+dl_times_r_over_r_squared_2 = -dl1_dtheta * r3_hat - r1_hat * dl3_dthetha
 dl_times_r_over_r_squared_3 = dl1_dtheta * r2_hat - r1_hat * dl2_dtheta
 
 dB1_dtheta = c*dl_times_r_over_r_squared_1
 dB2_dtheta = c*dl_times_r_over_r_squared_2
 dB3_dtheta = c*dl_times_r_over_r_squared_3
 
-print('dB1 = ')
+print('dB1/dtheta = ')
 print(dB1_dtheta)
-print('dB2 = ')
+print('dB2/dtheta = ')
 print(dB2_dtheta)
-print('dB3 = ')
+print('dB3/dtheta = ')
 print(dB3_dtheta)
 
-B1 = integrate(dB1_dtheta, theta)
-B2 = integrate(dB2_dtheta, theta)
-B3 = integrate(dB3_dtheta, theta)
+# int_dl_times_r_over_r_squared_1 = integrate(dl_times_r_over_r_squared_1, theta)
+# int_dl_times_r_over_r_squared_2 = integrate(dl_times_r_over_r_squared_2, theta)
+# int_dl_times_r_over_r_squared_3 = integrate(dl_times_r_over_r_squared_3, theta)
 
+print('Numeric Integration at (0, 0, 0)')
+#R = float(input('R= '))
+#N = float(input('N= '))
+#e = float(input('e = '))
+#d = float(input('d = '))
+#i = float(input('i = '))
+
+newR, newN, newe, newd, newi = 5, 10, .5, .1, 1
+newmu, newepsilon = 4e-7*pi, 8.85e-12
+
+dB1_dtheta = dB1_dtheta.subs(R, newR)
+dB1_dtheta = dB1_dtheta.subs(N, newN)
+dB1_dtheta = dB1_dtheta.subs(e, newe)
+dB1_dtheta = dB1_dtheta.subs(z, newd)
+dB1_dtheta = dB1_dtheta.subs(i, newi)
+dB1_dtheta = dB1_dtheta.subs(epsilon, newepsilon)
+dB1_dtheta = dB1_dtheta.subs(mu, newmu)
+dB1_dtheta = dB1_dtheta.subs(x, newx)
+dB1_dtheta = dB1_dtheta.subs(y, newy)
+dB1_dtheta = dB1_dtheta.subs(z, newz)
+dB2_dtheta = dB2_dtheta.subs(R, newR)
+dB2_dtheta = dB2_dtheta.subs(N, newN)
+dB2_dtheta = dB2_dtheta.subs(e, newe)
+dB2_dtheta = dB2_dtheta.subs(z, newd)
+dB2_dtheta = dB2_dtheta.subs(i, newi)
+dB2_dtheta = dB2_dtheta.subs(epsilon, newepsilon)
+dB2_dtheta = dB2_dtheta.subs(mu, newmu)
+dB2_dtheta = dB2_dtheta.subs(x, newx)
+dB2_dtheta = dB2_dtheta.subs(y, newy)
+dB2_dtheta = dB2_dtheta.subs(z, newz)
+dB3_dtheta = dB3_dtheta.subs(R, newR)
+dB3_dtheta = dB3_dtheta.subs(N, newN)
+dB3_dtheta = dB3_dtheta.subs(e, newe)
+dB3_dtheta = dB3_dtheta.subs(z, newd)
+dB3_dtheta = dB3_dtheta.subs(i, newi)
+dB3_dtheta = dB3_dtheta.subs(epsilon, newepsilon)
+dB3_dtheta = dB3_dtheta.subs(mu, newmu)
+dB3_dtheta = dB3_dtheta.subs(x, newx)
+dB3_dtheta = dB3_dtheta.subs(y, newy)
+dB3_dtheta = dB3_dtheta.subs(z, newz)
+
+print('dB1/dtheta = ')
+print(dB1_dtheta)
+print('dB2/dtheta = ')
+print(dB2_dtheta)
+print('dB3/dtheta = ')
+print(dB3_dtheta)
+
+B1 = quad(lambda x: dB1_dtheta.subs(theta, x).evalf(), 0, 2*newN*pi.evalf())
 print('B1 = ')
 print(B1)
+B2 = quad(lambda x: dB2_dtheta.subs(theta, x).evalf(), 0, 2*newN*pi.evalf())
 print('B2 = ')
 print(B2)
+B3 = quad(lambda x: dB3_dtheta.subs(theta, x).evalf(), 0, 2*newN*pi.evalf())
 print('B3 = ')
 print(B3)
+
