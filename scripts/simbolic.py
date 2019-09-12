@@ -67,4 +67,17 @@ print(dl3_dthetha)
 c = mu / (2*pi)
 print(c)
 
+dl_times_r_over_r_squared_1 = dl2_dtheta * z
+dl_times_r_over_r_squared_2 = -dl1_dtheta * z
+dl_times_r_over_r_squared_3 = dl1_dtheta * r2_hat - r1_hat * dl2_dtheta
 
+dB1 = c*dl_times_r_over_r_squared_1
+dB2 = c*dl_times_r_over_r_squared_2
+dB3 = c*dl_times_r_over_r_squared_3
+
+print('dB1 = ')
+print(dB1)
+print('dB2 = ')
+print(dB2)
+print('dB3 = ')
+print(dB3)
